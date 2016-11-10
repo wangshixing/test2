@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+</head>
+<body ng-app>
+<div ng-controller="MyContrl">
+	<input type="text" ng-model="abc" value="">
+	<h1>{{abc}}</h1>
+</div>
+
+
+
+<script>
+	function MyContrl($scope){
+		$scope.abc='1234';
+
+}
+</script>	
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+<script type="text/javascript" src="angular-1.5.8.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="MyContrl1">
+	<h1>{{say()}}</h1>
+	<h1>{{age}}</h1>
+</div>
+<div ng-controller="MyContrl2">
+	<h1>{{say()}}</h1>
+	<h1>{{age}}</h1>
+</div>
+
+
+
+<script>
+var app=angular.module('myApp',[]);
+app.controller('MyContrl1',function($scope,$rootScope){
+	$scope.say=function(){
+		return '大家好，我是韩梅梅';
+	}
+});
+
+app.controller('MyContrl2',['$scope','$rootScope',function(scope,rscope){
+	scope.say=function(){
+		return '大家好，我是李雷';
+	}
+	rscope.age=23;
+}])
+
+</script>	
+</body>
+</html>

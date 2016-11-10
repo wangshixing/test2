@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+<script type="text/javascript" src="angular-1.5.8.min.js"></script>
+</head>
+<body>
+<div ng-controller="MyContrl">
+    <button ng-click="jisuan()">点击我</button>
+    <h1>{{result1}}</h1>
+
+    <button ng-click="redult2=result2+1">点击我22</button>
+    <h1>{{result2}}</h1>
+    <button ng-click="toggle()">点击我33</button>
+    <h1 ng-hide="bool">{{result3}}</h1>
+</div>
+
+
+
+
+<script>
+var app=angular.module('myApp',[]);
+app.controller('MyContrl',['$scope',function(scope){
+	scope.result1=0;
+	scope.result2=0;
+	scope.result3='看不见我';
+	scope.bool=true;
+	scope.jisuan=function(){
+		scope.result1=scope.result1+1;
+	}
+	scope.toggle=function(){
+		scope.bool=!scope.bool;
+	}
+}])
+</script>	
+</body>
+</html>

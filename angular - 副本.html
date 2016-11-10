@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+	<meta name="keywords" content="">
+    <meta name="description" content="">
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+<style>
+.wrap{
+	width:400px;
+	height:50px;
+	margin:100px auto;
+}	
+.wrap ul{
+	width:400px;
+	border:1px solid #ccc;
+}
+/* .select{
+	color:#ffffff;
+	background:red;
+} */
+.con1 .a1{
+	color:#ffffff;
+	background:red;
+}.con2 .a2{
+	color:#ffffff;
+	background:red;
+}.con3 .a3{
+	color:#ffffff;
+	background:red;
+}.con4 .a4{
+	color:#ffffff;
+	background:red;
+}
+</style>
+</head>
+<body>
+    <div class="wrap" ng-controller="MyCtrl" ng-init="x='con1'">
+    	<nav ng-class="x">
+    		<a ng-click="x='con1'" href="" class="a1">新闻</a>
+    		<a ng-click="x='con2'" href="" class="a2">热点</a>
+    		<a ng-click="x='con3'" href="" class="a3">八卦</a>
+    		<a ng-click="x='con4'" href="" class="a4">体育</a>
+    	</nav>
+    		<ul ng-show="x=='con1'">
+    			<li ng-repeat="item in data1"><a href="{{item.url}}">{{item.title}}</a></li>
+    			
+    		</ul>
+    		<ul ng-show="x=='con2'">
+    			<li ng-repeat="item in data2"><a href="{{item.url}}">{{item.title}}</a></li>
+    			
+    		</ul>
+    		<ul ng-show="x=='con3'">
+    			<li ng-repeat="item in data3"><a href="{{item.url}}">{{item.title}}</a></li>
+    			
+    		</ul>
+    		<ul ng-show="x=='con4'">
+    			<li ng-repeat="item in data4"><a href="{{item.url}}">{{item.title}}</a></li>
+    			
+    		</ul>
+    </div>
+
+
+<script>
+var app=angular.module('myApp',[]);
+app.controller('MyCtrl',['$scope','$http',function(scope,http){
+        scope.data='';
+        http.get('http://qd.bokanedu.com/tgr/api/index.aspx?day=82&type=tabs').success(function(d){
+        	scope.data1=d.a1;//请求返回的数据
+        	scope.data2=d.a2;//请求返回的数据
+        	scope.data3=d.a3;//请求返回的数据
+        	scope.data4=d.a4;//请求返回的数据
+        	console.log(d);
+        })
+}])
+</script>	
+</body>
+</html>

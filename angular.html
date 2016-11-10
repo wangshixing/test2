@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+</head>
+<body>
+<div ng-controller='FirstCtrl'><!-- //添加控制器 -->
+	<h1>{{'Hello angular,第一个程序'}}</h1>
+	<h1>{{abc}}</h1>
+	<h1 ng-bind="abc"></h1>
+</div>
+
+
+
+<script>
+	function FirstCtrl($scope){
+           $scope.abc='你好';
+	}
+</script>	
+</body>
+</html>

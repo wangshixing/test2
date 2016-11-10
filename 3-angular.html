@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>标题</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<script type="text/javascript" src="angular-1.5.8.min.js"></script>
+<style>
+	/* *{margin:0; padding:0; list-style:none;} */
+	
+</style>
+</head>
+<body ng-app="myApp">
+<div ng-controller="gouwu">
+	<h2>ipad购物结算：</h2>
+	<p>单价：{{ipad.price | currency:'￥'}}</p>
+	<p>数量：<input type="number" min="1" value="" ng-model="ipad.num"></p>
+	<p>费用：{{sum()}}</p>
+	<p>邮费：{{ipad.freight | currency:'￥'}}</p>
+	<p>总价：{{sum()+total() | currency:'￥'}}</p>
+</div>
+
+	
+<script>
+var app=angular.module('myApp',[]);
+app.controller('gouwu',['$scope',function(scope){
+    scope.ipad={
+    	price:3000,
+    	num:1,
+    	freight:50
+    }
+    scope.sum=function(){
+          return scope.ipad.price*scope.ipad.num;   
+    };
+/*    scope.total=function(){
+
+    	return scope.ipad.freight=scope.sum()>=6000? 0:scope.ipad.freight; 
+    }*/
+    scope.total=scope.sum;
+    scope.total=function(){
+    	scope.$watch(scope.sum,function(newVal,oldVal){
+             scope.ipad.freight=newVal>=6000? 0:50; 
+    	});
+    }
+
+}]);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>指令1</title>
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+<style>
+  .box{
+    color:red;
+  }
+</style>
+</head>
+
+<body ng-app="myApp">
+  <!-- <my-tag></my-tag> -->
+  <!-- <div class="my-tag"></div> -->
+  <div my-tag></div>
+  <!-- directive:my-tag -->
+
+<script type="text/ng-template" id="abc">
+  <div class="box">
+      <ul>
+        <li><h3>内容111111</h3></li>
+        <li><h3>内容222222</h3></li>
+        <li><h3>内容333333</h3></li>
+        <li><h3>内容444444</h3></li>
+      </ul>
+    
+  </div>
+</script>
+<script>
+  var app=angular.module('myApp',[]);
+  app.directive('myTag',function(){
+    return{
+      restrict:'ECMA',
+      replace:true,
+      templateUrl:'abc'//引用的模板路径
+    }
+  });
+
+</script>	
+</body>
+</html>

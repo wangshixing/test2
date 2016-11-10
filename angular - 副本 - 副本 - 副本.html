@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+<script type="text/javascript" src="angular-1.5.8.min.js"></script>
+</head>
+<body ng-app>
+<div ng-controller="MyCtrl">
+   <ul>
+     <li ng-repeat="d in data" ng-class="{red:$first,blue:$middle,green:$last}">
+     <span>编号：{{$index+1}}</span>
+       <span>{{data.name}}</span>
+       <span>{{data.sex}}</span>
+     </li>
+   </ul>
+</div>
+
+
+
+<script>
+var app=angular.module("myApp",[]);
+app.controller('MyCtrl',['$scope',function(){
+
+
+  $scope.data=[
+      {'name':'小红','sex':'女'},
+      {'name':'小绿','sex':'男'},
+      {'name':'小花','sex':'女'},
+      {'name':'小明','sex':'男'}
+
+
+
+  ]
+}]);
+
+</script>	
+</body>
+</html>

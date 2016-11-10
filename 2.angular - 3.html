@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>指令1</title>
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+</head>
+<body ng-app="myApp">
+	
+  <!-- <div my-tag>原始标记内容</div> -->
+<my-tag></my-tag>
+<script>
+    var app=angular.module('myApp',[]);
+    app.directive('myTag',function(){
+    	return{
+            restrict:'ECMA',
+            replace:false,
+            transclude:true,//是否复制原始标签里的内容
+            template:'<div><p ng-transclude><h3>标题标题</h3>文章内容文章内容文章内容</p></div>'
+    	}
+    });
+</script>	
+</body>
+</html>

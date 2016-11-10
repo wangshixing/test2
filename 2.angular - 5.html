@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>指令1</title>
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+</head>
+<body>
+
+
+<script>
+ var app=angular.module('myApp',[]);
+ app.directive('myTag',function(){
+  restrict:'ECMA',
+  replace:false,
+  templateUrl:'tem.html'
+
+ })
+</script>	
+</body>
+</html>

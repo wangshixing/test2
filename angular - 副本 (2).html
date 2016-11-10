@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+<style>
+*{margin:0;padding:0;list-style: none}
+	.wrap{
+		width:420px;
+		margin:0 auto;
+		background: #94A6C9;
+	}
+	header{
+		overflow: hidden;
+		background: #86B1EE;
+		height:50px;
+	}
+	header .grid{
+		margin:17px 20px 0 10px;
+		float:right;
+		width:16px;
+		height:16px;
+		background: url(images/02.png) 0 0 no-repeat;
+	}
+	header .list{
+		margin:17px 20px 0 10px;
+		float:right;
+		width:16px;
+		height:16px;
+		background: url(images/01.png) 0 0 no-repeat;
+	}
+	.grid li img{
+		width:50px;
+		height:50px;
+	}
+	.list li img{
+		width:50px;
+		height:50px;
+	}
+	.grid li{
+		padding:10px;
+	}
+	.list{
+		overflow: hidden;
+
+	}
+	.list li{
+		float: left;
+		width:100px;
+		height:100px;
+		margin-left:10px 0 10px 30px;
+	}
+</style>
+</head>
+<body ng-app="myApp">
+<div class="wrap" ng-controller="myCtrl" ng-init="x='list'">
+    <header>
+    	<a ng-click="x='grid'" class="grid" href="#"></a>
+    	<a ng-click="x='list'" class="list" href="#"></a>
+    </header>
+    <ul class="grid" ng-show="x='grid'">
+    	<li>
+    		<img src="{{item.image}}" alt="">
+    		<h3>{{item.title}}</h3>
+    		<p>{{item.date}}</p>
+    	</li>
+    	<li>
+    		<img src="images/2.jpg" alt="">
+    		<h3>兰州一步行街塌</h3>
+    		<p>2016-08-25 02:41 来源：北京晨报"</p>
+    	</li>
+    </ul> 
+    <ul class="list" ng-show="x='list'">
+    	<li>
+    		<img src="images/1.jpg" alt="">
+
+    	</li>
+    	<li>
+    		<img src="images/2.jpg" alt="">
+    	
+    	</li><li>
+    		<img src="images/3.jpg" alt="">
+    	
+    	</li><li>
+    		<img src="images/4.jpg" alt="">
+    	
+    	</li>
+    </ul>
+
+</div>
+
+<script>
+
+var app=angular.module('myApp',[]);
+app.controller('myCtrl',['$scope','$http',function(scope,http){
+       scope.data='';
+        http.get('http://qd.bokanedu.com/tgr/api/index.aspx?day=82&type=tabs').success(function(d){
+        	scope.data=d;
+        
+        })
+}]);
+</script>	
+</body>
+</html>

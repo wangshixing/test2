@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>指令2</title>
+<script type="text/javascript" src="angular-1.2.20.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="personCtrl">
+    <ul>
+    	<li ng-repeat="per in data">
+    		<span>姓名：{{per.name}}</span>
+    		<span>性别：{{per.sex}}</span>
+    		<span>年龄：{{per.age}}</span>
+    	</li>
+    </ul>
+	
+</div>
+
+
+
+
+<script>
+   var app=angular.module('myApp',[]);
+   app.controller('personCtrl',['$scope',function(scope){
+   	scope.data=[
+           {'name':'lilei','sex':'男','age':20},
+           {'name':'lily','sex':'女','age':22},
+           {'name':'lucy','sex':'女','age':23},
+           {'name':'jack','sex':'男','age':24}
+
+   	]
+   }])
+</script>	
+</body>
+</html>
